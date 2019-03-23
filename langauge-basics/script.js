@@ -112,22 +112,85 @@
  * Challenge 1
  */
 
- var markHeight = 1.7;
- var markWeight = 100;
+// var markHeight = 1.7;
+// var markWeight = 100;
 
- var johnHeight = 2;
- var johnWeight = 80;
+// var johnHeight = 2;
+// var johnWeight = 80;
 
 
- // BMI
- var markBMI = markWeight / (markHeight * markHeight);
- var johnBMI = johnWeight / (johnHeight * johnHeight);
- console.log(markBMI, johnBMI);
+// // BMI
+// var markBMI = markWeight / (markHeight * markHeight);
+// var johnBMI = johnWeight / (johnHeight * johnHeight);
+// console.log(markBMI, johnBMI);
 
- var compair = markBMI >= johnBMI;
+// var compair = markBMI >= johnBMI;
 
- var whoAteAllThePies = 'Is Mark\'s BMI higher than John\'s?';
- console.log(whoAteAllThePies + ' ' + compair);
+// var whoAteAllThePies = 'Is Mark\'s BMI higher than John\'s?';
+// console.log(whoAteAllThePies + ' ' + compair);
 
- 
-    
+
+
+ /*********************
+ * If / else statements
+ */
+
+//  var firstName = 'John';
+//  var civilStatus = 'single';
+
+//  if (civilStatus === 'married') {
+//      console.log(firstName + ' is married');
+//  } else {
+//      console.log(firstName + ' will hopefully marry soon :)');
+//  }
+
+
+
+//  var isMarried = true;
+//  if (isMarried) {
+//     console.log(firstName + ' is married!');
+// } else {
+//     console.log(firstName + ' will hopefully marry soon :)');
+// }
+
+
+
+// var markHeight = 1.7;
+// var markWeight = 100;
+
+// var johnHeight = 2;
+// var johnWeight = 80;
+
+
+// // BMI
+// var markBMI = markWeight / (markHeight * markHeight);
+// var johnBMI = johnWeight / (johnHeight * johnHeight);
+
+// if(markBMI > johnBMI) {
+//     console.log('Mark ate all the pies!');
+// } else {
+//     console.log('John ate all the pies!');
+// }
+
+
+ /*********************
+ * Boolean logic
+ */
+
+var firstName = 'John';
+var age = 16;
+
+if (age < 13) {
+    console.log(firstName + ' is a boy.')
+} else if (age >= 13 && age < 20) { 
+    console.log(firstName + ' is a teenager.')
+} else if (age >= 20 && age < 30) {
+    console.log(firstName + ' is a young man.')
+} else {
+    console.log(firstName + ' is a man.')
+}
+
+
+ /*********************
+ * Boolean logic
+ */
