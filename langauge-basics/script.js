@@ -281,27 +281,213 @@
  * CODING CHALLENGE 1
  */
 
-var scoreJohn = (89 + 120 + 103) / 3;
-var scoreMike = (116 + 94 + 123) / 3;
-var scoreMary = (97 + 134 + 105) / 3;
-console.log (scoreJohn, scoreMike, scoreMary);
+// var scoreJohn = (89 + 120 + 103) / 3;
+// var scoreMike = (116 + 94 + 123) / 3;
+// var scoreMary = (97 + 134 + 105) / 3;
+// console.log (scoreJohn, scoreMike, scoreMary);
 
-// if (scoreJohn > scoreMike) {
+// // if (scoreJohn > scoreMike) {
+// //     console.log('John\'s team wins with ' + scoreJohn + ' points');
+// // } else if (scoreMike > scoreJohn) {
+// //     console.log('Mike\'s team wins with ' + scoreMike + ' points');
+// // } else {
+// //     console.log('There is a draw');
+// // }
+
+// if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
 //     console.log('John\'s team wins with ' + scoreJohn + ' points');
-// } else if (scoreMike > scoreJohn) {
+// } else if (scoreMike > scoreJohn && scoreMike > scoreMary) {
 //     console.log('Mike\'s team wins with ' + scoreMike + ' points');
+// } else if (scoreMary > scoreJohn && scoreMary > scoreMike) {
+//     console.log('Mary\'s team wins with ' + scoreMary + ' points');
 // } else {
 //     console.log('There is a draw');
 // }
 
-if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
-    console.log('John\'s team wins with ' + scoreJohn + ' points');
-} else if (scoreMike > scoreJohn && scoreMike > scoreMary) {
-    console.log('Mike\'s team wins with ' + scoreMike + ' points');
-} else if (scoreMary > scoreJohn && scoreMary > scoreMike) {
-    console.log('Mary\'s team wins with ' + scoreMary + ' points');
-} else {
-    console.log('There is a draw');
+
+/*********************
+ * Functions
+ */
+
+// function calculateAge(birthYear) {
+//     return 2018 - birthYear;
+// }
+
+// var ageJohn = calculateAge(1990);
+// var ageMike = calculateAge(1948);
+// var ageJane = calculateAge(1969);
+// console.log(ageJohn, ageMike, ageJane);
+
+
+// function yearsUntilRetirement(year, firstName) {
+//     var age = calculateAge(year);
+//     var retirement = 65 - age;
+
+//     if (retirement > 0) {
+//         console.log(firstName + ' retires in ' + retirement + ' years.');
+//     } else {
+//         console.log(firstName + ' is already retired.')
+//     }
+// }
+
+// yearsUntilRetirement(1990, 'John');
+// yearsUntilRetirement(1948, 'Mike');
+// yearsUntilRetirement(1969, 'Jane');
+
+
+
+/*********************
+ * Function Statements and Expressions
+ */
+
+// Function declaration.
+//function whatDoYouDo(job, firstName) {}
+
+// Function Expression. 
+// var whatDoYouDo = function(job, firstName) {
+//     switch(job) {
+//         case 'teacher':
+//             return firstName + ' teaches kids how to code.';
+//             // no need to 'break;' when using 'return' inside a function.
+//         case 'driver':
+//             return firstName + ' drives a cab in Lisbon.';
+//         case 'designer':
+//             return firstName + ' designs beautiful websites';
+//         default:
+//             return firstName + ' does something else.';
+//     }
+// }
+
+// console.log(whatDoYouDo("teacher", "John"));
+// console.log(whatDoYouDo("designer", "Sarah"));
+// console.log(whatDoYouDo("driver", "Cloe"));
+// console.log(whatDoYouDo("retired", "Kate"));
+
+
+/*********************
+ * Arrays
+ */
+
+//  // INITIALIZE A NEW ARRAY.
+// var names = ['John', 'Mark', 'Jane'];
+// // another way to write an array.
+// var years = new Array(1990, 1969, 1948);
+
+// // log the entire arrray.
+// console.log(names);
+// // or just one item index.
+// console.log(names[0]);
+// // or find out how many items are in the array.
+// console.log(names.length);
+
+
+// // MUTATING ARRAY DATA.
+
+// // overwrite an item in an array.
+// names[1] = 'Ben';
+// console.log(names);
+
+// // add an item to the end of an array.
+// names[names.length] = 'Mary';
+// console.log(names);
+
+// // Different data types within the same array.
+// var john = ['John', 'Smith', 1990, 'teacher', false];
+
+// // .push adds an element to the end of an array.
+// john.push('blue');
+// // .unshift adds an element to the begining of an array.
+// john.unshift('Mr,.');
+// console.log(john);
+
+// // .pop removes an item from the end of an array.
+// john.pop();
+// console.log(john);
+
+// // .shift removes an item from the begining of an array.
+// john.shift();
+// console.log(john);
+
+// // .indexOf is used to return the position of an item in an array.
+// // If the item in not in the array it will return '-1'.
+// console.log(john.indexOf(1990));
+
+// // Let's test whether John is a designer, using the ternary oporator.
+// var isDesigner = john.indexOf('designer') === -1
+// ? 'John is NOT a designer' : 'John IS a designer';
+// console.log(isDesigner);
+
+
+/*********************
+ * CODING CHALLENGE 3 - Tip calculator.
+ */
+
+// Create an empty array for the tip amount and total with tip.
+totalWithTip = [];
+justTheTip = [];
+
+// Create a variable to contain the current bill being calculated.
+var currentBill;
+
+// Write a function expression that contains a set of if statements
+// to work out how much to tip.
+var tipCalculator = function(bill) {
+    var total;
+    if (bill < 50) {
+        total = bill * 1.2;
+    } else if (bill > 49 && bill < 200) {
+        total = bill * 1.15;
+    } else {
+        total = bill * 1.1;
+    }
+    // push the total to the 'totalWithTip' array.
+    totalWithTip.push(total);
+    // calculate 'total' - 'bill' and push to 'justTheTip' array.
+    justTheTip.push(total - bill);
 }
 
+// We feed our data into the currentBill variable and call our function 3x.
+currentBill = 124;
+tipCalculator(currentBill);
 
+currentBill = 48;
+tipCalculator(currentBill);
+
+currentBill = 268;
+tipCalculator(currentBill);
+
+
+// Console log the arrays containing the output data.
+console.log(totalWithTip);
+console.log(justTheTip);
+
+
+
+// SOLUTION
+function tipCalculator(bill) {
+    var percentage;
+    if (bill < 50) {
+        percentage = .2;
+    } else if (bill >= 50 && bill < 200) {
+        percentage = .15;
+    } else {
+        percentage = .1;
+    }
+    return percentage * bill;
+}
+
+var bills = [124, 48, 268];
+
+var tips = [
+    tipCalculator(bills[0]),
+    tipCalculator(bills[1]),
+    tipCalculator(bills[2])
+];
+
+var finalValues = [
+    bills[0] + tips[0],
+    bills[1] + tips[1],
+    bills[2] + tips[2]
+];
+
+console.log(tips, finalValues);
