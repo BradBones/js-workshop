@@ -278,7 +278,7 @@
 
 
 /*********************
- * CODING CHALLENGE 1
+ * CODING CHALLENGE 2
  */
 
 // var scoreJohn = (89 + 120 + 103) / 3;
@@ -497,33 +497,98 @@
  * Objects & properties.
  */
 
- // Object literal.
-var john = {
-    firstName: 'John',
-    lastName: 'Smith',
-    birthYear: 1990,
-    family: ['Jane', 'Mark', 'Bob', 'Emily'],
-    job: 'teacher',
-    isMarried: false
-}
-// Indext objects using dot notation
-console.log(john.firstName);
-// or bracket notation.
-console.log(john['lastName']);
+//  // Object literal.
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1990,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'teacher',
+//     isMarried: false
+// }
+// // Indext objects using dot notation
+// console.log(john.firstName);
+// // or bracket notation.
+// console.log(john['lastName']);
 
-// Little trick - Set a variable to a property within the object but set as a string, then index it in the function call.
-var x = 'birthYear';
-console.log(john[x]);
+// // Little trick - Set a variable to a property within the object but set as a string, then index it in the function call.
+// var x = 'birthYear';
+// console.log(john[x]);
 
-// Mutating objects.
-john.job = 'designer';
-john['isMarried'] = true;
-console.log(john);
+// // Mutating objects.
+// john.job = 'designer';
+// john['isMarried'] = true;
+// console.log(john);
 
-// new object syntax
-// Creating (initialising) a new object.
-var jane = new Object();
-jane.firstName = 'Jane';
-jane.birthYear = 1969;
-jane['lastName'] = 'Smith';
-console.log(jane);
+// // new object syntax
+// // Creating (initialising) a new object.
+// var jane = new Object();
+// jane.firstName = 'Jane';
+// jane.birthYear = 1969;
+// jane['lastName'] = 'Smith';
+// console.log(jane);
+
+
+/*********************
+ * Objects & methods.
+ */
+// Methods are functions that are added to an object, in this case 'calcAge()'.
+
+
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1990,
+//     family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//     job: 'teacher',
+//     isMarried: false,
+//     calcAge: function() {
+//         this.age = 2018 - this.birthYear;
+//     }
+// };
+
+// john.calcAge();
+// console.log(john);
+
+
+/*********************
+ * CODING CHALLENGE 4. 
+ */
+
+// var mark = {
+//     name: 'Mark',
+//     height: 1.7,
+//     weight: 100,
+//     calcBmi: function() {
+//         this.bmi = this.weight / (this.height * this.height);
+//         return this.bmi;
+//     }
+// }
+
+// var john = {
+//     name: 'John',
+//     height: 2,
+//     weight: 80,
+//     calcBmi: function() {
+//         this.bmi = this.weight / (this.height * this.height);
+//         return this.bmi;
+//     }
+// }
+
+// // mark.calcBmi();
+// // john.calcBmi();
+// // This functions can be called below instead...
+// // With no need to call them more than once in the 'if' statement.
+
+// if (john.calcBmi() > mark.calcBmi()) {
+//     console.log(john.name + ' has a higher BMI of ' + john.bmi);
+// } else if (mark.bmi > john.bmi) {
+//     console.log(mark.name + ' has a higher BMI of ' + mark.bmi);
+// } else {
+//     console.log('They haave the same BMI.')
+// }
+
+
+/*********************
+ * Loops and iteration.
+ */
