@@ -593,62 +593,132 @@
  * Loops and iteration.
  */
 
-for (var i = 0; i < 10; i++) {
-     console.log(i);
- }
+// for (var i = 0; i < 10; i++) {
+//      console.log(i);
+//  }
 
- // i  = 0, 0 < 10 true, log i to console, i++
- // i = 1, 1 < 10 true, log i to console, i++
- // ...
- // i = 9, 9 < 10 true, log i to console, i++
- // i = 10, 10 < 10 FALSE, exits the loop!
+//  // i  = 0, 0 < 10 true, log i to console, i++
+//  // i = 1, 1 < 10 true, log i to console, i++
+//  // ...
+//  // i = 9, 9 < 10 true, log i to console, i++
+//  // i = 10, 10 < 10 FALSE, exits the loop!
 
 
- // Another example.
- // Now i is <= (less than or equal to 20) and i = i + 2 (+=).
-for (var i = 0; i <= 20; i += 2) {
-    console.log(i);
-}
+//  // Another example.
+//  // Now i is <= (less than or equal to 20) and i = i + 2 (+=).
+// for (var i = 0; i <= 20; i += 2) {
+//     console.log(i);
+// }
 
-// Array to be accessed by the loops.
-var john = ['John', 'Smith', 1990, 'teacher', false];
+// // Array to be accessed by the loops.
+// var john = ['John', 'Smith', 1990, 'teacher', false];
 
-// For loop.
-for (var i = 0; i < john.length; i++) {
-    console.log(john[i]);
-}
+// // For loop.
+// for (var i = 0; i < john.length; i++) {
+//     console.log(john[i]);
+// }
 
-// While loop.
-var i = 0;
-while(i < john.length) {
-    console.log(john[i]);
-    i++;
-}
+// // While loop.
+// var i = 0;
+// while(i < john.length) {
+//     console.log(john[i]);
+//     i++;
+// }
 
-// Continue and break statements.
+// // Continue and break statements.
 
-// Using continue to pass over any data item that is not a string.
-// This is an effective filter.
-for (var i = 0; i < john.length; i++) {
-    if (typeof john[i] !== 'string') continue;
-    console.log(john[i]);
-}
+// // Using continue to pass over any data item that is not a string.
+// // This is an effective filter.
+// for (var i = 0; i < john.length; i++) {
+//     if (typeof john[i] !== 'string') continue;
+//     console.log(john[i]);
+// }
 
-// Using break to stop the loop when it encounters a data item that is not a string.
-for (var i = 0; i < john.length; i++) {
-    if (typeof john[i] !== 'string') break;
-    console.log(john[i]);
-}
+// // Using break to stop the loop when it encounters a data item that is not a string.
+// for (var i = 0; i < john.length; i++) {
+//     if (typeof john[i] !== 'string') break;
+//     console.log(john[i]);
+// }
 
-// Running a loop in reverse (last data item to first data item).
-// Rember that .length takes us to the next space in an array - 
-// to get the last actual item, use '.length - 1'.
-for (var i = john.length -1; i >= 0; i--) {
-    console.log(john[i]);
-}
+// // Running a loop in reverse (last data item to first data item).
+// // Rember that .length takes us to the next space in an array - 
+// // to get the last actual item, use '.length - 1'.
+// for (var i = john.length -1; i >= 0; i--) {
+//     console.log(john[i]);
+// }
 
 
 
 /*********************
  * CODING CHALLENGE 5. 
  */
+
+ // PART 1
+var john = {
+    billPayer: 'John Smith',
+    billValues: [124, 48, 268, 180, 42],
+    percentage: [],
+    tipsTotals: [],
+    billsTotals: [],
+    calcTip: function() {
+        for (var i = 0; i < this.billValues.length; i++) {
+            if (this.billValues[i] < 50) {
+                this.percentage.push(.2);
+            } else if (this.billValues[i] >= 50 && this.billValues[i] < 200) {
+                this.percentage.push(0.15);
+            } else {
+                this.percentage.push(.1);
+            }
+            this.tipsTotals.push(this.percentage[i] * this.billValues[i]);
+            this.billsTotals.push(this.billValues[i] + this.tipsTotals[i]);
+        }
+    }
+};
+john.calcTip();
+console.log (john);
+
+
+// PART 2
+var mark = {
+    billPayer: 'Mark Miller',
+    billValues: [77, 475, 110, 45],
+    percentage: [],
+    tipsTotals: [],
+    billsTotals: [],
+    calcTip: function() {
+        for (var i = 0; i < this.billValues.length; i++) {
+            if (this.billValues[i] < 50) {
+                this.percentage.push(.2);
+            } else if (this.billValues[i] >= 50 && this.billValues[i] < 200) {
+                this.percentage.push(0.1);
+            } else {
+                this.percentage.push(.25);
+            }
+            this.tipsTotals.push(this.percentage[i] * this.billValues[i]);
+            this.billsTotals.push(this.billValues[i] + this.tipsTotals[i]);
+        }
+    }
+};
+mark.calcTip();
+console.log (mark);
+
+
+// Function to work out who tips the most on average? 
+function calcAverage(tips) {
+    var sum = 0;
+    for (var i = 0; i < tips.length; i++) {
+        sum = sum + tips[i];
+    }
+    return sum / tips.length;
+};
+
+// Do the calculations by calling the function.
+john.average = calcAverage(john.tipsTotals);
+mark.average = calcAverage(mark.tipsTotals);
+
+
+if (john.average > mark.average) {
+    console.log(john.billPayer + '\'s family pays higher tips, with an averge of $' + john.average);
+} else if (mark.average > john.average) {
+    console.log(mark.billPayer + '\'s family pays higher tips, with an averge of $' + mark.average);
+}
