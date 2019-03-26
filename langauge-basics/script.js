@@ -592,3 +592,63 @@
 /*********************
  * Loops and iteration.
  */
+
+for (var i = 0; i < 10; i++) {
+     console.log(i);
+ }
+
+ // i  = 0, 0 < 10 true, log i to console, i++
+ // i = 1, 1 < 10 true, log i to console, i++
+ // ...
+ // i = 9, 9 < 10 true, log i to console, i++
+ // i = 10, 10 < 10 FALSE, exits the loop!
+
+
+ // Another example.
+ // Now i is <= (less than or equal to 20) and i = i + 2 (+=).
+for (var i = 0; i <= 20; i += 2) {
+    console.log(i);
+}
+
+// Array to be accessed by the loops.
+var john = ['John', 'Smith', 1990, 'teacher', false];
+
+// For loop.
+for (var i = 0; i < john.length; i++) {
+    console.log(john[i]);
+}
+
+// While loop.
+var i = 0;
+while(i < john.length) {
+    console.log(john[i]);
+    i++;
+}
+
+// Continue and break statements.
+
+// Using continue to pass over any data item that is not a string.
+// This is an effective filter.
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') continue;
+    console.log(john[i]);
+}
+
+// Using break to stop the loop when it encounters a data item that is not a string.
+for (var i = 0; i < john.length; i++) {
+    if (typeof john[i] !== 'string') break;
+    console.log(john[i]);
+}
+
+// Running a loop in reverse (last data item to first data item).
+// Rember that .length takes us to the next space in an array - 
+// to get the last actual item, use '.length - 1'.
+for (var i = john.length -1; i >= 0; i--) {
+    console.log(john[i]);
+}
+
+
+
+/*********************
+ * CODING CHALLENGE 5. 
+ */
