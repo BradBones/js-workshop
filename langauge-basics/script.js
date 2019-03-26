@@ -422,72 +422,108 @@
  * CODING CHALLENGE 3 - Tip calculator.
  */
 
-// Create an empty array for the tip amount and total with tip.
-totalWithTip = [];
-justTheTip = [];
+// // Create an empty array for the tip amount and total with tip.
+// totalWithTip = [];
+// justTheTip = [];
 
-// Create a variable to contain the current bill being calculated.
-var currentBill;
+// // Create a variable to contain the current bill being calculated.
+// var currentBill;
 
-// Write a function expression that contains a set of if statements
-// to work out how much to tip.
-var tipCalculator = function(bill) {
-    var total;
-    if (bill < 50) {
-        total = bill * 1.2;
-    } else if (bill > 49 && bill < 200) {
-        total = bill * 1.15;
-    } else {
-        total = bill * 1.1;
-    }
-    // push the total to the 'totalWithTip' array.
-    totalWithTip.push(total);
-    // calculate 'total' - 'bill' and push to 'justTheTip' array.
-    justTheTip.push(total - bill);
+// // Write a function expression that contains a set of if statements
+// // to work out how much to tip.
+// var tipCalculator = function(bill) {
+//     var total;
+//     if (bill < 50) {
+//         total = bill * 1.2;
+//     } else if (bill > 49 && bill < 200) {
+//         total = bill * 1.15;
+//     } else {
+//         total = bill * 1.1;
+//     }
+//     // push the total to the 'totalWithTip' array.
+//     totalWithTip.push(total);
+//     // calculate 'total' - 'bill' and push to 'justTheTip' array.
+//     justTheTip.push(total - bill);
+// }
+
+// // We feed our data into the currentBill variable and call our function 3x.
+// currentBill = 124;
+// tipCalculator(currentBill);
+
+// currentBill = 48;
+// tipCalculator(currentBill);
+
+// currentBill = 268;
+// tipCalculator(currentBill);
+
+
+// // Console log the arrays containing the output data.
+// console.log(totalWithTip);
+// console.log(justTheTip);
+
+
+
+// // SOLUTION
+// function tipCalculator(bill) {
+//     var percentage;
+//     if (bill < 50) {
+//         percentage = .2;
+//     } else if (bill >= 50 && bill < 200) {
+//         percentage = .15;
+//     } else {
+//         percentage = .1;
+//     }
+//     return percentage * bill;
+// }
+
+// var bills = [124, 48, 268];
+
+// var tips = [
+//     tipCalculator(bills[0]),
+//     tipCalculator(bills[1]),
+//     tipCalculator(bills[2])
+// ];
+
+// var finalValues = [
+//     bills[0] + tips[0],
+//     bills[1] + tips[1],
+//     bills[2] + tips[2]
+// ];
+
+// console.log(tips, finalValues);
+
+
+/*********************
+ * Objects & properties.
+ */
+
+ // Object literal.
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
 }
+// Indext objects using dot notation
+console.log(john.firstName);
+// or bracket notation.
+console.log(john['lastName']);
 
-// We feed our data into the currentBill variable and call our function 3x.
-currentBill = 124;
-tipCalculator(currentBill);
+// Little trick - Set a variable to a property within the object but set as a string, then index it in the function call.
+var x = 'birthYear';
+console.log(john[x]);
 
-currentBill = 48;
-tipCalculator(currentBill);
+// Mutating objects.
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
 
-currentBill = 268;
-tipCalculator(currentBill);
-
-
-// Console log the arrays containing the output data.
-console.log(totalWithTip);
-console.log(justTheTip);
-
-
-
-// SOLUTION
-function tipCalculator(bill) {
-    var percentage;
-    if (bill < 50) {
-        percentage = .2;
-    } else if (bill >= 50 && bill < 200) {
-        percentage = .15;
-    } else {
-        percentage = .1;
-    }
-    return percentage * bill;
-}
-
-var bills = [124, 48, 268];
-
-var tips = [
-    tipCalculator(bills[0]),
-    tipCalculator(bills[1]),
-    tipCalculator(bills[2])
-];
-
-var finalValues = [
-    bills[0] + tips[0],
-    bills[1] + tips[1],
-    bills[2] + tips[2]
-];
-
-console.log(tips, finalValues);
+// new object syntax
+// Creating (initialising) a new object.
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
