@@ -1,5 +1,10 @@
 /*
-ALL CHALLENGES EXECUTED - MAKES GAME TOO HARD - SEE APP3.JS
+Reworking the game mechanic to be more playable.
+RULES:
+    1. Throw a double 1 (snake eyes) - Loose your turn and keep banked score!
+    2. Throw a double 6 (boxcars) - Loose your turn and loose banked score!!
+    3. Higher scoring game, so default top score 300.
+    4. Score needed to win can be changed by the user.
 
 */
 
@@ -24,16 +29,16 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         document.getElementById('dice-1').style.display = 'block';
         document.getElementById('dice-2').style.display = 'block';
         document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
-        document.getElementById('dice-1').src = 'dice-' + dice2 + '.png';
+        document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
         
-        // Compare to see if the current throw and the previous throw were both 6.
-        if (dice1 === 6 || dice2 === 6 && lastThrow1 === 6 || lastThrow2 === 6) {
-            // Player looses score.
+        // If a pair of 6s are thrown...
+        if (dice1 === 6 && dice2 === 6) {
+            // ...Player looses score.
             scores[activePlayer] = 0;
             document.getElementById('score-' + activePlayer).textContent = '0';
             nextPlayer();
         // Update the round score IF the rolled number was not a 1.    
-        } else if (dice1 !== 1 && dice2 !== 1) {
+        } else if (dice1 !== 1 || dice2 !== 1) {
             // Add score
             roundScore += dice1 + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -73,18 +78,37 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         // Check if player won the game.
         if (scores[activePlayer] >= winningScore) {
             document.getElementById('name-' + activePlayer).textContent = 'Winner!';
-            document.getElementById('dice1').style.display = 'none';
-            document.getElementById('dice2').style.display = 'none';
+            document.getElementById('dice-1').style.display = 'none';
+            document.getElementById('dice-2').style.display = 'none';
+            // Roll Dice Button hide.
+            document.querySelector('.btn-roll').style.display = 'none';
+            // Hold Button hide.
+            document.querySelector('.btn-hold').style.display = 'none';
+            
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             // Set game state to false to end the roll & hold buttons functionality.
             gamePlaying = false;
+
+            if (activePlayer = 1) {
+                switchControls();
+            };
         } else {
             // Next player's turn.
             nextPlayer();
         }
     }    
 });
+
+function switchControls() {
+    // Switch controls to other player.
+    // Roll Dice Button.
+    document.querySelector('.btn-roll').classList.toggle('btn-roll-p1');
+    document.querySelector('.btn-roll').classList.toggle('btn-roll-p0');
+    // Hold Button.
+    document.querySelector('.btn-hold').classList.toggle('btn-hold-p1');
+    document.querySelector('.btn-hold').classList.toggle('btn-hold-p0');
+}
 
 
 // Inter-round reset function - Resets the UI each time players switch turns within a game.
@@ -100,8 +124,18 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    document.getElementById('dice-1').style.display = 'none';
-    document.getElementById('dice-2').style.display = 'none';
+    switchControls();
+    
+    // // Switch controls to other player.
+    // // Roll Dice Button.
+    // document.querySelector('.btn-roll').classList.toggle('btn-roll-p1');
+    // document.querySelector('.btn-roll').classList.toggle('btn-roll-p0');
+    // // Hold Button.
+    // document.querySelector('.btn-hold').classList.toggle('btn-hold-p1');
+    // document.querySelector('.btn-hold').classList.toggle('btn-hold-p0');
+
+    // document.getElementById('dice-1').style.display = 'none';
+    // document.getElementById('dice-2').style.display = 'none';
 }
 
 // Button handler for the NEW GAME button.
@@ -132,6 +166,11 @@ function init() {
     document.querySelector('.player-1-panel').classList.remove('active');
     // Here we have to add back the active class to 'player 0' after removing it. All set for a new game.
     document.querySelector('.player-0-panel').classList.add('active');
+    // Roll Dice Button show.
+    document.querySelector('.btn-roll').style.display = 'block';
+    // Hold Button show.
+    document.querySelector('.btn-hold').style.display = 'block';
+       
 }
 
 

@@ -7,12 +7,13 @@
     left: 50%;
     transform: translateX(-50%);
     top: 520px;
-    color: #555;
+    color: #EB4D4D;
     font-size: 18px;
+    font-weight: bold;
     font-family: 'Lato';
     text-align: center;
     padding: 10px;
-    width: 160px;
+    width: 100px;
     text-transform: uppercase;
 }
 
@@ -20,6 +21,21 @@
 
 #dice-1 { top: 120px; }
 #dice-2 { top: 250px; }
+
+.instructions {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 570px;
+    color: #EB4D4D;
+    font-size: 9px;
+    font-family: 'Lato';
+    text-align: center;
+    /* padding: 10px;
+    width: 160px; */
+    text-transform: uppercase;
+}
+
 
 * {
     margin: 0;
@@ -86,7 +102,7 @@ body {
     font-size: 80px;
     font-weight: 100;
     color: #EB4D4D;
-    margin-bottom: 130px;
+    margin-bottom: 25px;
 }
 
 .active { background-color: #f7f7f7; }
@@ -114,8 +130,9 @@ body {
 .player-current-label {
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 12px;
-    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
 }
 
 .player-current-score {
@@ -156,9 +173,30 @@ i {
     transition: margin 0.3s;
 }
 
+/* OLD BUTTON STYLING */
 .btn-new { top: 45px;}
-.btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-roll { }
+.btn-hold { }
+
+/* Button position for player 1 (0) */
+.btn-roll-p0 {
+    top: 460px;
+    left: 25%;
+}
+.btn-roll-p1 {
+    top: 460px;
+    left: 75%;
+}
+/* Button position for player 2 (1) */
+.btn-hold-p0 {
+    top: 500px;
+    left: 25%;
+}
+.btn-hold-p1 {
+    top: 500px;
+    left: 75%;
+}
+    
 
 .dice {
     position: absolute;
@@ -171,3 +209,27 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.held {
+    position: absolute;
+    top: 270px;
+    transform: translateX(-50%);
+    height: 100px;
+    text-transform: uppercase;
+    color: #EB4D4D;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Lato';
+    text-align: center;
+    
+}
+
+#p0-held {
+    left: 25%;
+}
+
+#p1-held {
+    left: 75%;
+}
+
+
