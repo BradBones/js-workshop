@@ -90,9 +90,10 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             // Set game state to false to end the roll & hold buttons functionality.
             gamePlaying = false;
 
-            if (activePlayer = 1) {
+            if (activePlayer === 1) {
                 switchControls();
-            };
+            }
+
         } else {
             // Next player's turn.
             nextPlayer();
@@ -109,6 +110,8 @@ function switchControls() {
     document.querySelector('.btn-hold').classList.toggle('btn-hold-p1');
     document.querySelector('.btn-hold').classList.toggle('btn-hold-p0');
 }
+
+
 
 
 // Inter-round reset function - Resets the UI each time players switch turns within a game.
