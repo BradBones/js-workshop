@@ -214,37 +214,37 @@
 // interviewQuestion('teacher')('Sally');
 
 
-// Immediately Invoked Functions (IIFE)
+// // Immediately Invoked Functions (IIFE)
 
-// Say we want to produce a 'Coin Toss' game that hides the score and only gives us a true/false (win/loose) result.
-// This is the way of doing it with a function declairation.
-// function game() {
+// // Say we want to produce a 'Coin Toss' game that hides the score and only gives us a true/false (win/loose) result.
+// // This is the way of doing it with a function declairation.
+// // function game() {
+// //     var score = Math.random() * 10;
+// //     console.log(score >= 5);
+// // }
+// // game();
+
+// // We can also write an IIFE - Like this:
+// // The syntax works like this: By wrpping the entire function in brackets
+// // ...JS treats this as a function expression rather than a function declairation,
+// // ...because anything wrapped in brackets is NOT interprated as a statement.
+// // This is a way to prevent functions being read from the outside and helps with
+// // ... data privacy.
+// // NOTE: The open and closed parenthesis on the last line. This immediatley invokes the function.
+// (function () {
 //     var score = Math.random() * 10;
 //     console.log(score >= 5);
-// }
-// game();
+// })();
 
-// We can also write an IIFE - Like this:
-// The syntax works like this: By wrpping the entire function in brackets
-// ...JS treats this as a function expression rather than a function declairation,
-// ...because anything wrapped in brackets is NOT interprated as a statement.
-// This is a way to prevent functions being read from the outside and helps with
-// ... data privacy.
-// NOTE: The open and closed parenthesis on the last line. This immediatley invokes the function.
-(function () {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-})();
+// // To prove this, we can log the score and see that "Score is not defined".
+// console.log(score);
 
-// To prove this, we can log the score and see that "Score is not defined".
-console.log(score);
-
-// We can also pass a value into the function.
-// For example, lets rig the game by adding some goodLuck and passing in the value of 5.
-(function (goodLuck) {
-    var score = Math.random() * 10;
-    console.log(score >= 5 - goodLuck);
-})(5);
+// // We can also pass a value into the function.
+// // For example, lets rig the game by adding some goodLuck and passing in the value of 5.
+// (function (goodLuck) {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5 - goodLuck);
+// })(5);
 
 
 
