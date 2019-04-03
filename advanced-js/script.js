@@ -247,14 +247,107 @@
 // })(5);
 
 
+// // Closures
+
+// function retirement(retirementAge) {
+//     var a = ' years left until retirement';
+//     return function(yearOfBirth) {
+//         var age = 2019 - yearOfBirth;
+//         console.log((retirementAge - age) + a);
+//     }
+// }
+
+// var retirementUS = retirement(66);
+// retirementUS(1990);
+
+// // Alternative shorter version (but not as easy to read).
+// retirement(66)(1990)
+
+// // Lets create some more of these for various countries.
+// var retirementGermany = retirement(65);
+// var retirementIceland = retirement(67);
+
+// retirementGermany(1990);
+// retirementIceland(1990);
+
+
+// function interviewQuestion(job) {
+//     return function(name) {
+//         if (job === 'designer') {
+//             console.log(name + ', can you please explain what UX design is?');     
+//         } else if (job === 'teacher') {
+//             console.log('What subjet do you teach, ' + name + '?');
+//         } else {
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+
+// interviewQuestion('designer')('Mary');
+
+// var designer = interviewQuestion('teacher');
+// designer('Jane');
 
 
 
+// Bind, Call & Apply
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey! What\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+};
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+
+// The call method allows us to 'borrow' 'this' from the John object.
+john.presentation.call(emily, 'friendly', 'afternoon')
+
+// bind method creates a function that can be used to preset arguments.
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly('morning');
+johnFriendly('night');
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('afternoon');
 
 
+// Example
 
+var birthYear = [1978, 1990, 1965, 1937, 2005, 1998];
 
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+};
 
+function calculateAge(item) {
+    return 2019 - item;
+}
 
+function isFullAge(limit, item) {
+    return item >= limit;
+}
 
+var ages = arrayCalc(years, calculateAge);
 
+// Bind allows us to create a copy of a function with some or all of the arguments preset.
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+console.log(ages);
+console.log(fullJapan);
