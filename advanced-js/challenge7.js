@@ -69,7 +69,7 @@ var randomQuestion = function(arr) {
     var userInput = prompt(selectedQuestion.question);
 
         // If else statement to test for a corect answer and also to allow the player to exit by typing 'exit' in the input field.
-        // Note, if we use the strict operator here '===' it always returns else.    
+        // Note, if we use the strict operator here '===' it always returns else beacuse we're comparing a string to a number. (We could also use the parseInt() method to convirt a string to a number.)    
         if (userInput == selectedQuestion.correctAnswer) {
             console.log('Well done! ' + selectedQuestion.correctAnswer + ' is the right answer!');
             alert('Your answer is correct!');
