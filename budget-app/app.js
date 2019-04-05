@@ -9,7 +9,7 @@
 // BUDGET CONTROLLER
 /////////////////////////////////
 
-var budgetController = (function() {
+var BudgetController = (function() {
 
 
 
@@ -27,7 +27,8 @@ var UIController = (function() {
     var DOMstrings = {
         inputType: '.add__type',
         inputDescription: '.add__description',
-        inputValue: '.add__value'
+        inputValue: '.add__value',
+        inputBtn: '.add__btn'
     };
 
     // Return an object.
@@ -59,10 +60,22 @@ var UIController = (function() {
 
 var AppController = (function(budgetCtrl, UICtl) {
 
-    // Controller function to handle the user clicking the 'add' button or pressing the rtn key.
-    
-    // Pulls in (imports) the DOMstrings object from the UI Controller module.
-    var DOM = UICtl.getDOMstrings();
+    var setupEventListeners = function() {
+
+         // Pulls in (imports) the DOMstrings object from the UI Controller module.
+        var DOM = UICtl.getDOMstrings();
+
+         // Button click event handler. (If clicked, run the ctrlAddItem function.)
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+        // Return-key-press event listener. (event.which is for older browsers.)
+        document.addEventListener('keypress', function(event) {
+            if (event.keyCode === 13 || event.which === 13) {
+                // console.log('Enter was pressed.');
+                ctrlAddItem();
+            }
+        });
+    }; 
     
     var ctrlAddItem = function() {
         console.log('it works!');
@@ -79,20 +92,21 @@ var AppController = (function(budgetCtrl, UICtl) {
 
         // 5. Display the budget
 
-    }
+    };
 
-    // Button click event handler. (If clicked, run the ctrlAddItem function.)
-    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
-
-    // Return-key-press event listener. (event.which is for older browsers.)
-    document.addEventListener('keypress', function(event) {
-        if (event.keyCode === 13 || event.which === 13) {
-            // console.log('Enter was pressed.');
-            ctrlAddItem();
+    // Creates an object that allows this IFEE to export data to the (global) public scope.
+    return {
+        init: function() {
+            console.log('Application has started.');
+            setupEventListeners();
         }
-    });
+    }
+    
+})(BudgetController, UIController);
 
-})(budgetController, UIController);
 
+// Only line of code placed on the outside of the modules.
+// It runs the init function that allows selected data to flow between modules in the wider scope.
+AppController.init();
 
 
