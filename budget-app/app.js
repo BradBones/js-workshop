@@ -11,7 +11,30 @@
 
 var BudgetController = (function() {
 
+    // Constructor functions to generate items based on the user's inputs.
+    var Expense = function(id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
 
+    var Income = function(id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    // Data struture to store the input items.
+    var data = {
+        allItems: {
+            expenses: [],
+            income: []
+        },
+        totals: {
+            expenses: 0,
+            income: 0
+        }
+    }
 
 })();
 
