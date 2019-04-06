@@ -125,7 +125,11 @@ var UIController = (function() {
         inputValue: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expensesContainer: '.expenses__list'
+        expensesContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage'
     };
 
     // Return an object.
@@ -183,6 +187,20 @@ var UIController = (function() {
             feildsArr[0].focus(); 
         },
 
+        displayBudget: function(obj) {
+            document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
+            document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
+            document.querySelector(DOMstrings.expensesLabel).textContent = obj.totalExp;
+            
+            // If statement to make sure that the % symbol shows if the percentage is greater than zero
+            if (obj.percentage > 0) {
+                document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
+            } else { // And that a blank space displays when < 0 (hides our -1 trick)
+                document.querySelector(DOMstrings.percentageLabel).textContent = '---';
+            }
+
+        },
+
         // Shares (exports) the DOMstrings object outside of this IFEE.
         getDOMstrings: function() {
             return DOMstrings;
@@ -225,7 +243,7 @@ var AppController = (function(budgetCtrl, UICtl) {
         var budget = budgetCtrl.getBudget();
 
         // 3. Display the budget
-        console.log(budget);
+        UICtl.displayBudget(budget);
     };
 
     var ctrlAddItem = function() {
@@ -260,6 +278,12 @@ var AppController = (function(budgetCtrl, UICtl) {
     return {
         init: function() {
             console.log('Application has started.');
+            UICtl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: -1
+            });
             setupEventListeners();
         }
     }
