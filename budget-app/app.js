@@ -129,7 +129,8 @@ var UIController = (function() {
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container'
     };
 
     // Return an object.
@@ -232,6 +233,9 @@ var AppController = (function(budgetCtrl, UICtl) {
                 ctrlAddItem();
             }
         });
+
+        // Event (deligation) listener for the delete item button. 
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     }; 
     
     var updateBudget = function() {
@@ -271,6 +275,21 @@ var AppController = (function(budgetCtrl, UICtl) {
             updateBudget();
 
         }; // Here we can place an else and prompt the user to enter a number greater than 0.
+
+    };
+
+    // Delete an item from the budget.
+    var ctrlDeleteItem = function(event) {
+        var itemId, splitID;
+        // Example of DOM traversing, skipping up a parent node each time from the delete button up to the container id (4 jumps).
+        itemId = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+        if (itemID) {
+            // .split breaks a string into parts and stores each part in an array. In this case 
+            // ...we want to split the inc/exp and the coresponding id number.
+            splitID = itemID.split('-');
+
+        }
 
     };
 
