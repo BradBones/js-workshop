@@ -280,7 +280,7 @@ var AppController = (function(budgetCtrl, UICtl) {
 
     // Delete an item from the budget.
     var ctrlDeleteItem = function(event) {
-        var itemId, splitID;
+        var itemId, splitID, type, ID;
         // Example of DOM traversing, skipping up a parent node each time from the delete button up to the container id (4 jumps).
         itemId = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
@@ -288,6 +288,14 @@ var AppController = (function(budgetCtrl, UICtl) {
             // .split breaks a string into parts and stores each part in an array. In this case 
             // ...we want to split the inc/exp and the coresponding id number.
             splitID = itemID.split('-');
+            type = splitID[0];
+            ID = splitID[1];
+
+            // 1. delete the item from the data structure
+
+            // 2. delete the item from the user interface
+
+            // 3. update and show the new budget
 
         }
 
