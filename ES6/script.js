@@ -233,3 +233,7 @@
 //////////////////////////
 // Arrays
 
+// ES6
+const boxes = document.querySelectorAll('.box');
+
+Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerbue');
