@@ -181,50 +181,55 @@
 
 
 
-function Person(name) {
-    this.name = name;
-};
+// function Person(name) {
+//     this.name = name;
+// };
 
-// ES5 (using bind to fix the scope issue)
-Person.prototype.myFriends5 = function(friends) {
-    var arr = friends.map(function(el) {
-        return this.name + ' is friends with ' + el;
-    }.bind(this));
-    console.log(arr);
-}
+// // ES5 (using bind to fix the scope issue)
+// Person.prototype.myFriends5 = function(friends) {
+//     var arr = friends.map(function(el) {
+//         return this.name + ' is friends with ' + el;
+//     }.bind(this));
+//     console.log(arr);
+// }
 
-var friends = ['Bob', 'Jane', 'Mark'];
-new Person('John').myFriends5(friends);
-
-
-// ES6 (using an arrow function to control scope)
-Person.prototype.myFriends6 = function(friends) {
-    var arr = friends.map(el => `${this.name} is friends with ${el}.`);
-    console.log(arr);
-}
-new Person('Mike').myFriends6(friends);
+// var friends = ['Bob', 'Jane', 'Mark'];
+// new Person('John').myFriends5(friends);
 
 
-
-/////////////////////////
-// Destructuring
-
-// ES5
-var john = ['John', 26];
-var name = john[0];
-var age = john[1];
-
-// ES6
-const [name, year] = ['John', 26];
+// // ES6 (using an arrow function to control scope)
+// Person.prototype.myFriends6 = function(friends) {
+//     var arr = friends.map(el => `${this.name} is friends with ${el}.`);
+//     console.log(arr);
+// }
+// new Person('Mike').myFriends6(friends);
 
 
 
-function calcAgeRetirement(year) {
-    const age = new Date().getFullYear() - year;
-    return [age, 65 - age];
-}
+// /////////////////////////
+// // Destructuring
+
+// // ES5
+// var john = ['John', 26];
+// var name = john[0];
+// var age = john[1];
+
+// // ES6
+// const [name, year] = ['John', 26];
 
 
-const [age, retirement] = calcAgeRetirement(1990);
- console.log(age);
- console.log(retirement);
+
+// function calcAgeRetirement(year) {
+//     const age = new Date().getFullYear() - year;
+//     return [age, 65 - age];
+// }
+
+
+// const [age, retirement] = calcAgeRetirement(1990);
+//  console.log(age);
+//  console.log(retirement);
+
+
+//////////////////////////
+// Arrays
+
