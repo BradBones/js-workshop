@@ -651,7 +651,8 @@ class park extends Element {
 
     treeDensity() {
         const density = this.numTrees  /  this.area;
-        console.log(`${this.name} has a tree density of ${density} trees  per square KeyframeEffect.call.`);
+        // In a real app, we would return this next line rather than console.log
+        console.log(`${this.name} has a tree density of ${density} trees  per square km.`);
     }
 }
 
